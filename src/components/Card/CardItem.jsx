@@ -1,4 +1,3 @@
-
 function CardItem({ item }) {
   if (!item) {
     return null; // или можно возвращать сообщение об ошибке
@@ -76,4 +75,5 @@ function CardItem({ item }) {
   }
 }
 
-export default CardItem;
+export default CardItem;  
+  
