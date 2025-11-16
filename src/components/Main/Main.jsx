@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"; 
 import Column from "../Column/Column.jsx"; 
-import { cardList } from "../mock/data.js";
+import { cardList } from "../mock/data.js"; 
+import { MainWrapper, MainBlock } from "./Main.styled.js";
 
 function Main() { 
   const [isLoading, setIsLoading] = useState(true);
@@ -15,7 +16,7 @@ function Main() {
   }, []);
 
   return (
-    <div className="main__content" style={{ height: "100vh", position: "relative" }}>
+    <MainWrapper style={{ height: "100vh", position: "relative" }}>
       {isLoading && (
         <div
           style={{
@@ -36,7 +37,7 @@ function Main() {
       )}
 
       {!isLoading && (
-        <div className="main__block">
+        <MainBlock>
           {statuses.map((status) => (
             <Column
               key={status}
@@ -44,9 +45,9 @@ function Main() {
               items={cards.filter((item) => item.status === status)}
             />
           ))}
-        </div>
+        </MainBlock>
       )}
-    </div>
+    </MainWrapper>
   );
 }
 

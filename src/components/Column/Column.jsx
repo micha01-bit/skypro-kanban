@@ -1,18 +1,18 @@
-import CardItem from "../Card/CardItem.jsx"; 
-import { useState, useEffect } from "react";
+import CardItem from "../CardItem/CardItem.jsx"; 
+import { ColumnWrapper, ColumnTitle, ColumnItems } from "./Column.styled.js";
 
 function Column({ title, items }) {
   return (
-    <div className="main__column column">
-      <div className="column__title">
+    <ColumnWrapper>
+      <ColumnTitle>
         <p>{title}</p>
-      </div> 
-      <div className="items">
+      </ColumnTitle> 
+      <ColumnItems>
      {items.map((item) => (
         <CardItem key={item.id} item={item} />
       ))}
-</div>
-</div>
+</ColumnItems>
+</ColumnWrapper>
   );
 } 
 
