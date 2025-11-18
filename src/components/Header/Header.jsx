@@ -1,6 +1,7 @@
 import { useState } from 'react'; 
 import {
-  HeaderWrapper,
+  HeaderWrapper, 
+  HeaderContainer,
   HeaderBlock,
   HeaderLogo,
   HeaderNav,
@@ -20,19 +21,19 @@ function Header() {
   return (
     <>
       <HeaderWrapper>
-        <div className="container">
+        <HeaderContainer>
           <HeaderBlock>
             {/* Логотипы */}
-            <div className="header__logo _show _light">
+            
               <a href="" target="_self">
-                <HeaderLogo src="../images/logo.png" alt="logo" />
+                <HeaderLogo src="/images/logo.png" alt="logo" />
               </a>
-            </div>
-            <div className="header__logo _dark">
+            
+            
               <a href="" target="_self">
-                <HeaderLogo src="../images/logo_dark.png" alt="logo" />
+                <HeaderLogo src="/images/logo_dark.png" alt="logo" />
               </a>
-            </div>
+            
 
             {/* Навигация */}
             <HeaderNav>
@@ -74,10 +75,14 @@ function Header() {
               )}
             </HeaderNav>
           </HeaderBlock>
-        </div>
+        </HeaderContainer>
       </HeaderWrapper>
     </>
   );
 }
 
-export default Header;
+export default Header; 
+  
+ 
+{/* <div className='header_logo _show _light'></div> */}  
+{/* <div className="header__logo _dark"></div> */}

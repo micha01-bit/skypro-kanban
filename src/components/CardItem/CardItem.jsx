@@ -78,6 +78,3 @@ function CardItem({ item }) {
 }
 
 export default CardItem;  
-  
-{/* <div className={`cards_theme_${themeColor}`}></div> */} 
-{/* <p className={`_${themeColor}`}>{topic}</p> */}
