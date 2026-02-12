@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { fetchTasks, postTask, editTask } from "../services/api.js";
+import { useState, useEffect } from 'react';
+import { fetchTasks, createTask, updateTask } from '../services/tasks.js';
 
 export const useTasks = (token) => {
   const [tasks, setTasks] = useState([]);
@@ -7,16 +7,16 @@ export const useTasks = (token) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (token) {
-      loadTasks();
-    }
+    if (!token) return;
+    loadTasks();
   }, [token]);
+
 
   const loadTasks = async () => {
     setIsLoading(true);
     setError(null);
     try {
-      const data = await fetchTasks({ token });
+      const data = await fetchTasks(token);
       setTasks(data);
     } catch (err) {
       setError(err.message);
@@ -29,7 +29,7 @@ export const useTasks = (token) => {
     setIsLoading(true);
     setError(null);
     try {
-      const newTask = await postTask({ token, task });
+      const newTask = await createTask(token, task);
       setTasks((prev) => [...prev, newTask]);
     } catch (err) {
       setError(err.message);
@@ -38,11 +38,11 @@ export const useTasks = (token) => {
     }
   };
 
-  const updateTask = async (id, updatedTask) => {
+  const updateTaskById = async (id, updatedTask) => {
     setIsLoading(true);
     setError(null);
     try {
-      const updated = await editTask({ token, id, task: updatedTask });
+      const updated = await updateTask(token, id, updatedTask);
       setTasks((prev) =>
         prev.map((task) => (task.id === id ? updated : task))
       );
@@ -53,12 +53,14 @@ export const useTasks = (token) => {
     }
   };
 
-  return { tasks, isLoading, error, loadTasks, addTask, updateTask };
+  return { tasks, isLoading, error, loadTasks, addTask, updateTaskById };
 };
 
- 
+
+
   
    
+    
 // import { useState, useEffect } from 'react';
 // import { fetchTasks, postTask, editTask } from '../services/api.js';
 

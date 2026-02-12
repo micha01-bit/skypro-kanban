@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
-import { signIn, signUp, getUsers } from "../services/auth.js";
+import { useState, useEffect } from 'react';
+import { signIn, signUp, logout } from '../services/auth.js';
+
 
 export const useAuth = () => {
-  const [token, setToken] = useState(localStorage.getItem("tokenAuth") || null);
+  const [token, setToken] = useState(localStorage.getItem('tokenAuth') || null);
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -19,10 +20,9 @@ export const useAuth = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await signIn(userData);
-      setToken(response.token);
-      setUser(response);
-      localStorage.setItem("tokenAuth", response.token);
+      const userData = await signIn(userData);
+      setToken(userData.token);
+      setUser(userData);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -34,10 +34,9 @@ export const useAuth = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await signUp({ name, login, password });
-      setToken(response.token);
-      setUser(response);
-      localStorage.setItem("tokenAuth", response.token);
+      const userData = await signUp({ name, login, password });
+      setToken(userData.token);
+      setUser(userData);
     } catch (err) {
       setError(err.message);
     } finally {
@@ -45,18 +44,21 @@ export const useAuth = () => {
     }
   };
 
-  const logout = () => {
+  const clearAuth = () => {
+    logout();
     setToken(null);
     setUser(null);
-    localStorage.removeItem("tokenAuth");
   };
 
-  return { token, user, isLoading, error, login, register, logout };
+  return { token, user, isLoading, error, login, register, clearAuth };
 };
+
+
+
  
  
-  
-  
+   
+    
 // import { useState, useEffect } from 'react';
 // import { signIn, signUp, getUsers } from '../services/auth.js';
 

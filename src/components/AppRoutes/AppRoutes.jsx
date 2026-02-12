@@ -1,23 +1,22 @@
-import "../../App.css";
-import { Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Routes, Route } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth.js';
 import Main from '../Main/Main.jsx';
-import SignInPage from "../../pages/SignIn.jsx";
-import SignUpPage from "../../pages/SignUp.jsx";
+import SignInPage from '../../pages/SignInPage.jsx';
+import SignUpPage from '../../pages/SignUpPage.jsx';
 import PopNewCard from '../../pages/popups/PopNewCard/PopNewCard.jsx';
 import PopBrowse from '../../pages/popups/PopBrowse/PopBrowse.jsx';
 import PopUser from '../../pages/popups/PopUser/PopUser.jsx';
-import PrivateRoute from "../../components/PrivateRoute/PrivateRoute.jsx";
-import NotFoundPage from "../../pages/NotFound.jsx";
-import { useAuth } from "../../hooks/useAuth.js";
+import PrivateRoute from '../../components/PrivateRoute/PrivateRoute.jsx';
+import NotFoundPage from '../../pages/NotFound.jsx';
+
 
 const AppRoutes = () => {
-  const { isAuth } = useAuth();
+  const { token } = useAuth();
 
   return (
     <Routes>
-      <Route element={<PrivateRoute isAuth={isAuth} />}>
-        <Route path="/" element={<Main />} />
+      <Route element={<PrivateRoute />}>
+        <Route path="/" element={<Main token={token} />} />
         <Route path="/card/:id" element={<PopBrowse />} />
         <Route path="/popExit" element={<PopUser />} />
         <Route path="/PopNewCard" element={<PopNewCard />} />
@@ -30,7 +29,9 @@ const AppRoutes = () => {
 };
 
 export default AppRoutes;
- 
+
+
+
  
   
    

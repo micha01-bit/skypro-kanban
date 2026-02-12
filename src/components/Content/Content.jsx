@@ -1,16 +1,44 @@
+import { useState, useEffect } from 'react';
 import Column from '../Column/Column.jsx';
+import { useTasks } from '../../hooks/useTasks.js';
 import { MainWrapper, MainBlock } from '../Main/Main.styled.js';
+
 
 const statuses = ['Без статуса', 'Нужно сделать', 'В работе', 'Тестирование', 'Готово'];
 
-const Content = ({ tasks }) => {
+const Content = ({ token }) => {
+  const { tasks, isLoading, error, loadTasks } = useTasks(token);
+
+  useEffect(() => {
+    if (token) loadTasks();
+  }, [token, loadTasks]);
+
+  if (isLoading) {
+    return (
+      <MainWrapper>
+        <div style={{ textAlign: 'center', padding: '20px' }}>
+          Загружаем задачи...
+        </div>
+      </MainWrapper>
+    );
+  }
+
+  if (error) {
+    return (
+      <MainWrapper>
+        <div style={{ color: 'red', textAlign: 'center', padding: '20px' }}>
+          Ошибка: {error}
+        </div>
+      </MainWrapper>
+    );
+  }
+
   return (
     <MainWrapper>
       <MainBlock>
         {statuses.map((status) => (
           <Column
-            key={  
-               status}
+            key={status}
             title={status}
             items={tasks.filter((item) => item.status === status)}
           />
@@ -20,7 +48,12 @@ const Content = ({ tasks }) => {
   );
 };
 
-export default Content; 
+export default Content;
+
+
+
+ 
+ 
   
    
 // import { useState } from 'react';

@@ -7,7 +7,7 @@ const SignUp = () => {
 export default SignUp;
  
  
-  
+   
    
 // import AuthForm from "../AuthForm/AuthForm.jsx";
 
