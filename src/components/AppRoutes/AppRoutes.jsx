@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+ import { BrowserRouter,Routes, Route } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth.js';
 import Main from '../Main/Main.jsx';
 import SignInPage from '../../pages/SignInPage.jsx';
@@ -13,7 +13,7 @@ import NotFoundPage from '../../pages/NotFound.jsx';
 const AppRoutes = () => {
   const { token } = useAuth();
 
-  return (
+  return ( 
     <Routes>
       <Route element={<PrivateRoute />}>
         <Route path="/" element={<Main token={token} />} />
@@ -24,11 +24,46 @@ const AppRoutes = () => {
       <Route path="/sign-in" element={<SignInPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
       <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    </Routes>  
   );
 };
 
-export default AppRoutes;
+export default AppRoutes; 
+ 
+  
+   
+    
+// import { Routes, Route } from 'react-router-dom';
+// import { useAuth } from '../../hooks/useAuth.js';
+// import Main from '../Main/Main.jsx';
+// import SignInPage from '../../pages/SignInPage.jsx';
+// import SignUpPage from '../../pages/SignUpPage.jsx';
+// import PopNewCard from '../../pages/popups/PopNewCard/PopNewCard.jsx';
+// import PopBrowse from '../../pages/popups/PopBrowse/PopBrowse.jsx';
+// import PopUser from '../../pages/popups/PopUser/PopUser.jsx';
+// import PrivateRoute from '../../components/PrivateRoute/PrivateRoute.jsx';
+// import NotFoundPage from '../../pages/NotFound.jsx';
+
+
+// const AppRoutes = () => {
+//   const { token } = useAuth();
+
+//   return (
+//     <Routes>
+//       <Route element={<PrivateRoute />}>
+//         <Route path="/" element={<Main token={token} />} />
+//         <Route path="/card/:id" element={<PopBrowse />} />
+//         <Route path="/popExit" element={<PopUser />} />
+//         <Route path="/PopNewCard" element={<PopNewCard />} />
+//       </Route>
+//       <Route path="/sign-in" element={<SignInPage />} />
+//       <Route path="/sign-up" element={<SignUpPage />} />
+//       <Route path="*" element={<NotFoundPage />} />
+//     </Routes>
+//   );
+// };
+
+// export default AppRoutes;
 
 
 

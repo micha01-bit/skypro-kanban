@@ -48,11 +48,7 @@ const Content = ({ token }) => {
   );
 };
 
-export default Content;
-
-
-
- 
+export default Content;    
  
   
    

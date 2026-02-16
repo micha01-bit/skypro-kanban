@@ -40,5 +40,4 @@ export async function updateTask(token, id, task) {
   } catch (error) {
     throw new Error(error.response?.data?.error || 'Не удалось обновить задачу');
   }
-}
-
+} 

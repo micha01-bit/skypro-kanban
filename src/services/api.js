@@ -1,4 +1,4 @@
-import axios from 'axios';
+ import axios from 'axios';
 
 const API_URL = 'https://wedev-api.sky.pro';
 
@@ -63,7 +63,7 @@ export async function updateTask(token, id, task) {
   } catch (error) {
     throw new Error(error.response?.data?.error || 'Ошибка обновления задачи');
   }
-}
+}  
 
  
   

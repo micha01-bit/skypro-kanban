@@ -1,12 +1,11 @@
-import AuthForm from "../AuthForm/AuthForm.jsx";
+ import AuthForm from "../AuthForm/AuthForm.jsx";
 
 const SignIn = () => {
   // useAuth уже управляет состоянием авторизации
   return <AuthForm isSignUp={false} />;
 };
 
-export default SignIn;
- 
+export default SignIn;   
  
   
    

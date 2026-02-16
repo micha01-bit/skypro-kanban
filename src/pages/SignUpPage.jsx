@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+ import { useNavigate } from 'react-router-dom';
 import AuthForm from '../components/AuthForm/AuthForm.jsx';
 
 const SignUpPage = () => {
@@ -11,7 +11,7 @@ const SignUpPage = () => {
   return <AuthForm isSignUp={true} onSuccess={handleSuccess} />;
 };
 
-export default SignUpPage;
+export default SignUpPage;  
  
   
   

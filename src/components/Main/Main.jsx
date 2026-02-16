@@ -75,7 +75,7 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Main; 
     
 // import Header from '../Header/Header.jsx';
 // import PopNewCard from '../../pages/popups/PopNewCard/PopNewCard.jsx';

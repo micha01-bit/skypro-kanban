@@ -146,7 +146,7 @@ const AuthForm = ({ isSignUp, onSuccess }) => {
   );
 };
 
-export default AuthForm;
+export default AuthForm; 
 
   
    

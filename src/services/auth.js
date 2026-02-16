@@ -46,8 +46,7 @@ export async function getUsers() {
 
 export function logout() {
   localStorage.removeItem('tokenAuth');
-}
-
+} 
 
 
  

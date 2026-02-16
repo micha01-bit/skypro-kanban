@@ -1,4 +1,4 @@
-import { CardsItem, CardsCard, CardsGroup, CardBtn, CardsTheme, CardContent, CardTitle, CardDate } from "./CardItem.styled.js"; 
+ import { CardsItem, CardsCard, CardsGroup, CardBtn, CardsTheme, CardContent, CardTitle, CardDate } from "./CardItem.styled.js"; 
   
 function CardItem({ item }) {
   if (!item) {
@@ -77,4 +77,4 @@ function CardItem({ item }) {
   }
 }
 
-export default CardItem;  
+export default CardItem; 

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+ import { useNavigate } from 'react-router-dom';
 import AuthForm from '../components/AuthForm/AuthForm.jsx';
 
 
@@ -12,7 +12,7 @@ const SignInPage = () => {
   return <AuthForm isSignUp={false} onSuccess={handleSuccess} />;
 };
 
-export default SignInPage;
+export default SignInPage; 
  
   
   

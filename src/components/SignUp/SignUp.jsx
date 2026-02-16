@@ -4,7 +4,7 @@ const SignUp = () => {
   return <AuthForm isSignUp />;
 };
 
-export default SignUp;
+export default SignUp; 
  
  
    
