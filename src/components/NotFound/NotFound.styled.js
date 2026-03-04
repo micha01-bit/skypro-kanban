@@ -1,53 +1,29 @@
 import styled from "styled-components";
 
 
-export const SHeader = styled.header`
-  width: 100%;
-  margin: 0 auto;
-  background-color: #FFFFFF;
+export const SPageBackground = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: #EAEEF6;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
 `;
 
-export const SHeaderContainer = styled.div`
-  max-width: 1260px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 30px;
+export const STitle = styled.p`
+  font-size: 150px;
+  font-weight: 700;
 `;
 
-export const SHeaderBlock = styled.div`
-  height: 70px;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  top: 0;
-  left: 0;
-  padding: 0 10px;
-`;
-
-export const SHeaderLogo = styled.div`
-  width: 85px;
-`;
-
-export const SHeaderLogoLight = styled.img`
-  width: 85px;
-`;
-
-export const SHeaderLogoDark = styled.img`
-  width: 85px;
-`;
-
-export const SHeaderNavigation = styled.nav`
-  max-width: 290px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+export const SMessage = styled.p`
+  font-size: 50px;
+  font-weight: 700;
 `;
 
 export const SButtonWrapper = styled.div`
-  margin-right: 20px;
+  margin-top: 50px;
 `;
 
 export const SHeaderButton = styled.button`
@@ -99,7 +75,4 @@ export const SHeaderLink = styled.div`
     margin: -6px 0 0 5px;
     padding: 0;
   }
-`;
-
-export const SPopUserWrapper = styled.div`
 `;

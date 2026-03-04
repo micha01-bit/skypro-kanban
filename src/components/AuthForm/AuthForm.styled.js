@@ -1,84 +1,89 @@
-import styled from "styled-components";  
- 
-export const AuthFormWrapper = styled.div`
-  max-width: 100%;
-  width: 100vw;
-  min-height: 100vh;
-  overflow: hidden;
-  background-color: rgba(234, 238, 246, 1); 
-`;   
- 
-export const AuthFormModal = styled.div`
- width: 100%;
- height: 100%;
- min-width: 320px;
- min-height: 100vh;
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+
+export const SPageBackground = styled.div`
+    width: 100vw;
+    height: 100vh;
+    background-color: #EAEEF6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    `;
+
+export const SWrapper = styled.div`
+  width: 368px;
+  /* height: 329px; */
+  background-color: #FFFFFF;
+  border: 0.7px solid #D4DBE5;
+  border-radius: 10px;
+  padding: 50px 60px;
+  box-shadow: 0px 4px 67px -12px #00000021;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
 `;
- 
-export const AuthFormContainer = styled.div`
-width: 368px; 
-display: flex;
-flex-direction: row;
-justify-content: flex-start;
-align-items: flex-start;
-padding: 50px 60px 50px 60px;
-box-sizing: border-box;
-border: 0.7px solid rgba(212, 219, 229, 1);
-border-radius: 10px;
-box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
-background: rgba(255, 255, 255, 1);
-`; 
- 
-export const AuthFormModalBlock = styled.div`
- width: 100%;
- display: flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: center;; 
+
+export const STitle = styled.p`
+  font-size: 20px;
+  font-weight: 700;
 `;
- 
-export const AuthFormTitle = styled.h2`
-width: 100%; 
-color: rgba(0, 0, 0, 1);
-font-family: Roboto;
-font-size: 20px;
-font-weight: 700;
-line-height: 150%;
-text-align: center; 
-margin: 0 0 20px; 
-`; 
- 
-export const AFForm = styled.form`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-gap: 20px;
-width: 100%; 
-`; 
- 
-export const AFInputWrapper = styled.div`
-display: flex;
-flex-direction: column;
-width: 100%;
-gap: 7px;
-`; 
- 
-export const AFFormGroup = styled.div`
-width: 100%; 
-color: rgba(148, 166, 190, 0.4);
-font-family: Roboto;
-font-size: 14px;
-font-weight: 400;
-line-height: 150%;
-text-align: center; 
- 
-& a {
- color: rgba(148, 166, 190, 0.4); 
- text-decoration: underline;
-}
-`; 
+
+export const SForm = styled.form`
+  /* font-size: 20px;
+  font-weight: 700; */
+`;
+
+export const SInputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 7px;
+`;
+
+export const SFooterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 7px; */
+  line-height: 150%;
+  margin-top: 20px;
+`;
+
+export const SFooterText = styled.p`
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(148, 166, 190, 0.4); 
+`;
+
+export const SFooterLink = styled(Link)`
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: underline;
+  color: rgba(148, 166, 190, 0.4);
+  cursor: pointer;
+  /* &:visited {
+    color: rgba(148, 166, 190, 0.4);
+  } */
+`;
+
+export const SErrorMessageWrapper = styled.div`
+  /* width: 250px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 20px;
+`;
+
+export const SErrorMessageText = styled.p`
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #F84D4D;
+  text-align: center;
+  line-height: 150%;
+`;

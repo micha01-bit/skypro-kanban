@@ -1,20 +1,30 @@
-import CardItem from "../CardItem/CardItem.jsx"; 
-import { ColumnWrapper, ColumnTitle, ColumnItems } from "./Column.styled.js";
+import { Card } from "../Card/Card";
+import { SColumn, SColumnTitleContainer, SColumnTitle, SCards, SCardItem } from "./Column.styled";
+import { format } from "date-fns";
 
-function Column({ title, items }) {
+
+export const Column = ({ title, cardsByStatus }) => {
   return (
-    <ColumnWrapper>
-      <ColumnTitle>
-        <p>{title}</p>
-      </ColumnTitle> 
-      <ColumnItems>
-     {items.map((item) => (
-        <CardItem key={item.id} item={item} />
-      ))}
-</ColumnItems>
-</ColumnWrapper>
-  );
-} 
-
-
-export default Column; 
+    <SColumn>
+      <SColumnTitleContainer>
+        <SColumnTitle>{title}</SColumnTitle>
+      </SColumnTitleContainer>
+      <SCards>
+        {
+          cardsByStatus[title].map((card) => {
+            return (
+              <SCardItem key={card._id}>
+                <Card
+                  id={card._id}
+                  topic={card.topic}
+                  title={card.title}
+                  date={format(card.date, "dd.MM.yy")}
+                />
+              </SCardItem>
+            )
+          })
+        }
+      </SCards>
+    </SColumn>
+  )
+}
