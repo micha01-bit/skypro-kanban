@@ -1,5 +1,5 @@
 import './App.css';
-import { AppRoutes } from './components/AppRouts.jsx';
+import { AppRoutes } from './components/AppRoutes.jsx';
 import { useState } from 'react';
 import { AuthProvider } from './context/AuthProvider.jsx';
 import { TasksProvider } from './context/TasksProvider.jsx';

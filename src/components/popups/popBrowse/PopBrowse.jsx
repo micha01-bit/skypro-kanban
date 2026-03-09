@@ -1,6 +1,6 @@
 import { SWrapper, SContainer, SBlock, SContent, STopBlock, STitle, SCategoriesThemeTop, SCategoryThemeTop, SStatusesWrapper, SStatusesTitle, SStatusesContent, SStatus, SStatusTheme, SFormWrapper, SForm, SFormBlock, SFormLabel, SFormText, SButtonsWrapper, SButtonsGroup } from "./PopBrowse.styled";
 import { Calendar } from "../../calendar/Calendar";
-import { Button } from "../../button/Button";
+import { Button } from "../../Button/Button";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { TasksContext } from "../../../context/TasksContext";

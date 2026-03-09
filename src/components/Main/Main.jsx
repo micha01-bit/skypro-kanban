@@ -1,5 +1,5 @@
 import { Header } from "../Header/Header";
-import { Content } from "../content/Content";
+import { Content } from "../Content/Content";
 import { SWrapper, SMock, SMessage } from "./Main.styled";
 import { Button } from "../Button/Button";
 import { Link } from "react-router-dom";

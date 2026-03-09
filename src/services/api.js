@@ -1,4 +1,4 @@
-import axios from "axios";
+ import axios from "axios";
 
 
 const API_URL = "https://wedev-api.sky.pro/api/kanban";
@@ -10,9 +10,9 @@ export async function fetchTasks({ token }) {
         Authorization: "Bearer " + token,
       },
     });
-    return data.data.tasks;
+    return data.data.tasks; 
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error.message); 
   }
 }
 
@@ -24,9 +24,10 @@ export async function postTask({ token, newTask }) {
         "Content-Type": ""
       },
     });
-    return data.data.tasks;
+    return data.data.tasks; 
+    return response.data;
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error.message); 
   }
 }
 
@@ -38,9 +39,9 @@ export async function getTask({ token, id }) {
         "Content-Type": ""
       },
     });
-    return data.data;
+    return data.data; 
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error.message); 
   }
 }
 
@@ -52,9 +53,9 @@ export async function editTask(token, id, task ) {
         "Content-Type": ""
       },
     });
-    return data.data.tasks;
+    return data.data.tasks; 
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error.message); 
   }
 }
 
@@ -66,9 +67,8 @@ export async function deleteTask(token, id) {
         "Content-Type": "text"
       },
     });
-    return data.data.tasks;
+    return data.data.tasks; 
   } catch (error) {
-    throw new Error(error.message);
+    throw new Error(error.message); 
   }
 }
-

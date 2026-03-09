@@ -62,7 +62,7 @@ export const SCalendarArrow = styled.svg`
 `
 
 export const SCalendarContent = styled.div`
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 `
 
 export const SCalendarDaysNames = styled.div`
@@ -92,7 +92,7 @@ export const SCalendarDayNameWeekend = styled.div`
 
 export const SCalendarCells = styled.div`
   width: 182px;
-  height: 126px;
+  height: 156px;
   display: flex;
   flex-wrap: wrap;
 `

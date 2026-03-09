@@ -1,5 +1,5 @@
 import { statuses } from "../../data";
-import { Column } from "../column/Column";
+import { Column } from "../Column/Column";
 import { SContent, SContainer, SBlock, SData } from "./Content.styled";
 import { TasksContext } from "../../context/TasksContext";
 import { useContext } from "react";

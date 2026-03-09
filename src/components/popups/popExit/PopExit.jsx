@@ -1,5 +1,5 @@
 import { SWrapper, SContainer, SBlock, SContent, STitle, SForm, SButtonWrapper } from "./PopExit.styled";
-import { Button } from "../../button/Button";
+import { Button } from "../../Button/Button";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
