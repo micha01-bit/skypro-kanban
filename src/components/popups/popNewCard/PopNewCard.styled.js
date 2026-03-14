@@ -11,15 +11,22 @@ export const SPageBackground = styled.div`
 `;
 
 export const SWrapper = styled.div`
-  /* display: none; */
   width: 100%;
   min-width: 375px;
-  height: 100%;
+  height: 100vh;
   min-height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 6;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media screen and (max-width: 495px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const SContainer = styled.div`
@@ -32,27 +39,49 @@ export const SContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.4);
+  @media screen and (max-width: 660px) {
+    padding: 0;
+    justify-content: flex-start;
+  }
+  @media screen and (max-width: 495px) {
+    padding: 0;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const SBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #FFFFFF;
+  background-color: var(--bg-secondary);
   max-width: 630px;
   width: 100%;
   padding: 40px 30px 48px;
   border-radius: 10px;
-  border: 0.7px solid #D4DBE5;
+  border: 0.7px solid var(--borders);
   position: relative;
+  @media screen and (max-width: 660px) {
+    border-radius: 0;
+  }
+  @media screen and (max-width: 495px) {
+    padding: 20px 16px 32px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const SContent = styled.div`
   display: block;
   text-align: left;
+  @media screen and (max-width: 495px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const STitle = styled.p`
-  color: #000;
+  color: var(--text-primary);
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
@@ -63,10 +92,10 @@ export const SXButton = styled.div`
   position: absolute;
   top: 20px;
   right: 30px;
-  color: #94A6BE;
+  color: var(--text-secondary);
   cursor: pointer;
   &:hover {
-    color: #000000;
+    color: var(--text-primary);
   }
 `;
 
@@ -74,6 +103,9 @@ export const SNewCardWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  @media screen and (max-width: 660px) {
+    display: block;
+  }
 `;
 
 export const SFormNewCard = styled.form`
@@ -81,7 +113,17 @@ export const SFormNewCard = styled.form`
   width: 100%;
   display: block;
   margin-bottom: 20px;
-  `;
+  @media screen and (max-width: 495px) {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+  }
+  @media screen and (max-width: 495px) {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+`;
 
 export const SFormBlock = styled.div`
   display: flex;
@@ -89,7 +131,7 @@ export const SFormBlock = styled.div`
 `;
 
 export const SFormTitle = styled.label`
-  color: #000;
+  color: var(--text-primary);
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -99,7 +141,7 @@ export const SFormInput = styled.input`
   width: 100%;
   outline: none;
   padding: 14px;
-  background: transparent;
+  background-color: var(--bg-secondary);
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   border-radius: 8px;
   font-size: 14px;
@@ -110,14 +152,14 @@ export const SFormInput = styled.input`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94A6BE;
+    color: var(--text-secondary);
     letter-spacing: -0.14px;
   };
     &::-moz-placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94A6BE;
+    color: var(--text-secondary);
     letter-spacing: -0.14px;
   }
 `;
@@ -139,14 +181,14 @@ export const SFormDescribe = styled.textarea`
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94A6BE;
+    color: var(--text-secondary);
     letter-spacing: -0.14px;
   };
     &::-moz-placeholder {
     font-weight: 400;
     font-size: 14px;
     line-height: 1px;
-    color: #94A6BE;
+    color: var(--text-secondary);
     letter-spacing: -0.14px;
   }
 `;
@@ -157,7 +199,7 @@ export const SCategoriesWrapper = styled.div`
 `
 
 export const SCategoriesTitle = styled.p`
-  color: #000;
+  color: var(--text-primary);
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -239,4 +281,8 @@ export const BSButtonWrapper = styled.div`
   flex-wrap: nowrap;
   flex-direction: row;
   justify-content: flex-end;
-`
+  @media screen and (max-width: 495px) {
+    width: 100%;
+    justify-content: center;
+  }
+` 

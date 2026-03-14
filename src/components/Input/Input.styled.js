@@ -5,6 +5,8 @@ export const SInput = styled.input`
   width: 248px;
   height: 30px;
   padding: 8px 10px;
+  background-color: transparent;
+  color:  var(--text-primary);
   border: 0.7px solid ${({ $error }) => ($error ? 'rgba(248, 77, 77, 1)' : 'rgba(148, 166, 190, 0.4)')};
   border-radius: 8px;
   &:hover {

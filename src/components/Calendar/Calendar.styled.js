@@ -1,17 +1,19 @@
 import styled from "styled-components";
 
 
-// export const SCalendarWrapper = styled.div`
-//   width: 100%;
-// `
-
 export const SCalendarContainer = styled.div`
   width: 182px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 660px) {
+    max-width: 340px;
+    width: 100%;
+  }
 `
 
 export const SCalendarTitle = styled.p`
-  color: #000;
+  color: var(--text-primary);
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -20,11 +22,13 @@ export const SCalendarTitle = styled.p`
 `
 
 export const SCalendarBlock = styled.div`
-  display: block;
+  /* display: block; */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `
 
 export const SCalendarNavigation = styled.div`
-  /* padding: 0; */
   display: block;
   width: 100%;
   display: flex;
@@ -32,10 +36,13 @@ export const SCalendarNavigation = styled.div`
   justify-content: space-between;
   margin-top: 14px;
   padding: 0 7px;
+  @media screen and (max-width: 660px) {
+    padding: 0;
+  }
 `
 
 export const SCalendarMonth = styled.div`
-  color: #94A6BE;
+  color: var(--text-secondary);
   font-size: 14px;
   line-height: 25px;
   font-weight: 600;
@@ -54,15 +61,14 @@ export const SCalendarNavAction = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* fill: #94A6BE; */
 `
 
 export const SCalendarArrow = styled.svg`
-  fill: #94A6BE;
+  fill: var(--text-secondary);
 `
 
 export const SCalendarContent = styled.div`
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 `
 
 export const SCalendarDaysNames = styled.div`
@@ -75,7 +81,7 @@ export const SCalendarDaysNames = styled.div`
 `
 
 export const SCalendarDayName = styled.div`
-  color: #94A6BE;
+  color: var(--text-secondary);
   font-size: 10px;
   font-weight: 500;
   line-height: normal;
@@ -83,18 +89,29 @@ export const SCalendarDayName = styled.div`
 `
 
 export const SCalendarDayNameWeekend = styled.div`
-  color: #94A6BE;
+  color: var(--text-secondary);
   font-size: 10px;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.2px;
+  @media screen and (max-width: 660px) {
+    font-size: 14px;
+  }
 `
 
 export const SCalendarCells = styled.div`
   width: 182px;
-  height: 156px;
+  min-height: 126px;
+  height: auto;
   display: flex;
   flex-wrap: wrap;
+  @media screen and (max-width: 660px) {
+    width: 344px;
+    min-height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 `
 
 export const SCalendarCellDay = styled.div`
@@ -106,115 +123,46 @@ export const SCalendarCellDay = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  /* color: #94A6BE; */
-  ${({ $isDateSelected }) => ($isDateSelected ? "color: #FFFFFF;" : "color: #94A6BE;")}
+  ${({ $isDateSelected }) => ($isDateSelected ? "color: var(--text-tertiary);" : "color: var(--text-secondary);")}
   ${({ $isDateSelected }) => ($isDateSelected ? "background-color: #94A6BE;" : "background-color: transparent;")}
   
   font-size: 10px;
   line-height: 1;
   letter-spacing: -0.2px;
-  /* cursor: pointer; */
   cursor: ${({ $isClickable }) => $isClickable ? "pointer" : "default"};
 
   &:hover {
-    /* color: #94A6BE;
-    background-color: #EAEEF6; */
-    ${({ $isClickable }) => ($isClickable ? "color: #94A6BE;" : "")}
+    ${({ $isClickable }) => ($isClickable ? "color: var(--text-secondary);" : "")}
     ${({ $isClickable }) => ($isClickable ? "background-color: #EAEEF6;" : "")}
   }
   &:active {
-    /* color: #FFFFFF;
-    background-color: #94A6BE; */
-    ${({ $isClickable }) => ($isClickable ? "color: #FFFFFF;" : "")}
+    ${({ $isClickable }) => ($isClickable ? "color: var(--text-tertiary);" : "")}
     ${({ $isClickable }) => ($isClickable ? "background-color: #94A6BE;" : "")}
+  }
+
+  @media screen and (max-width: 660px) {
+    width: 42px;
+    height: 42px;
+    font-size: 14px;
   }
 `
 
-// export const SCalendarCellDayWeekend = styled.div`
-//   width: 22px;
-//   height: 22px;
-//   margin: 2px;
-//   border-radius: 50%;
-//   display: flex;
-//   flex-wrap: nowrap;
-//   align-items: center;
-//   justify-content: center;
-//   color: #94A6BE;
-//   font-size: 10px;
-//   line-height: 1;
-//   letter-spacing: -0.2px;
-//   cursor: pointer;
-//   &:hover {
-//   color: #94A6BE;
-//   background-color: #EAEEF6;
-// }
-// `
-
-// export const SCalendarCellDayCurrent = styled.div`
-//   width: 22px;
-//   height: 22px;
-//   margin: 2px;
-//   border-radius: 50%;
-//   display: flex;
-//   flex-wrap: nowrap;
-//   align-items: center;
-//   justify-content: center;
-//   color: #94A6BE;
-//   font-size: 10px;
-//   line-height: 1;
-//   letter-spacing: -0.2px;
-//   cursor: pointer;
-//   font-weight: 700;
-//   &:hover {
-//     color: #94A6BE;
-//     background-color: #EAEEF6;
-// }
-// `
-
-// export const SCalendarCellOtherMonth = styled.div`
-//   width: 22px;
-//   height: 22px;
-//   margin: 2px;
-//   border-radius: 50%;
-//   display: flex;
-//   flex-wrap: nowrap;
-//   align-items: center;
-//   justify-content: center;
-//   color: #94A6BE;
-//   font-size: 10px;
-//   line-height: 1;
-//   letter-spacing: -0.2px;
-//   cursor: pointer;
-//   opacity: 0;
-// `
-
-// export const SCalendarCellOtherMonthWeekend = styled.div`
-//   width: 22px;
-//   height: 22px;
-//   margin: 2px;
-//   border-radius: 50%;
-//   display: flex;
-//   flex-wrap: nowrap;
-//   align-items: center;
-//   justify-content: center;
-//   color: #94A6BE;
-//   font-size: 10px;
-//   line-height: 1;
-//   letter-spacing: -0.2px;
-//   cursor: pointer;
-// `
-
 export const SCalendarPeriod = styled.div`
   padding: 0 7px;
+  @media screen and (max-width: 660px) {
+    padding: 0;
+  }
 `
 
 export const SCalendarDateEnd = styled.p`
-  color: #94A6BE;
+  color: var(--text-secondary);
   font-size: 10px;
   line-height: 1;
+  @media screen and (max-width: 660px) {
+    font-size: 14px;
+  }
 `
 
 export const SCalendarDateControl = styled.span`
-  color: #000000;
-`
-
+  color: var(--text-primary);
+` 

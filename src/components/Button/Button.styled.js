@@ -22,8 +22,12 @@ export const SButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
   background-color: ${({ $type }) => colors[$type]};
   ${({ $type }) => ($type === "secondary" ? "color: #565EEF" : "")}
+  @media screen and (max-width: 495px) {
+    width: 100% !important;
+  }
 `;
 
 export const PrimaryButton = styled(SButton)`
@@ -36,11 +40,12 @@ export const PrimaryButton = styled(SButton)`
 
 export const SecondaryButton = styled(SButton)`
   background-color: transparent;
-  color: #565EEF;
-  border: 0.7px solid #565EEF;
+  color: var(--text-header-link);
+  border: 0.7px solid var(--borders-button);
   width: ${({ width }) => width};
   &:hover {
     background-color: #565EEF;
     color: #FFFFFF;
+    border: 0.7px solid transparent;
   }
-`;
+`; 

@@ -12,7 +12,7 @@ export const SWrapper = styled.div`
   `;
 
 export const SMock = styled.div`
-  color: #94A6BE;
+  color: var(--text-secondary);
   font-size: 30px;
   font-weight: 600;
   line-height: 1;
@@ -26,4 +26,4 @@ export const SMock = styled.div`
 `;
 
 export const SMessage = styled.div`
-`;
+`; 
