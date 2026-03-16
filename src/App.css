@@ -807,7 +807,7 @@ body {
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #94A6BE;
+  color: #94A6BE; 
 }
 
 .pop-user-set__close:hover {
@@ -822,7 +822,9 @@ body {
 .main__block {
   width: 100%;
   margin: 0 auto;
-  padding: 25px 0 49px;
+  padding: 25px 0 49px; 
+  display: flex; 
+  max-width: 1200px;
 }
 .main__content {
   width: 100%;
@@ -1117,4 +1119,4 @@ body {
   font-size: 14px;
   font-weight: 400;
   padding-top: 30px;
-}
+} 

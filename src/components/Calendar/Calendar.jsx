@@ -16,34 +16,34 @@ function Calendar() {
                             </div>
                           </div>
                           <div className="calendar__cells">
-                            <div className="calendar__cell_other-month">28</div>
-                            <div className="calendar__cell_other-month">29</div>
-                            <div className="calendar__cell_other-month">30</div>
-                            <div className="calendar__cell_cell-day">31</div>
-                            <div className="calendar__cell_cell-day">1</div>
-                            <div className="calendar__cell_cell-day _weekend">
+                            <div className="calendar__cell _other-month">28</div>
+                            <div className="calendar__cell _other-month">29</div>
+                            <div className="calendar__cell _other-month">30</div>
+                            <div className="calendar__cell _cell-day">31</div>
+                            <div className="calendar__cell _cell-day">1</div>
+                            <div className="calendar__cell _cell-day _weekend">
                               2
                             </div>
-                            <div className="calendar__cell_cell-day _weekend">
+                            <div className="calendar__cell _cell-day _weekend">
                               3
                             </div>
-                            <div className="calendar__cell_cell-day">4</div>
-                            <div className="calendar__cell_cell-day">5</div>
-                            <div className="calendar__cell_cell-day ">6</div>
-                            <div className="calendar__cell_cell-day">7</div>
-                            <div className="calendar__cell_cell-day_current">
+                            <div className="calendar__cell _cell-day">4</div>
+                            <div className="calendar__cell _cell-day">5</div>
+                            <div className="calendar__cell _cell-day ">6</div>
+                            <div className="calendar__cell _cell-day">7</div>
+                            <div className="calendar__cell _cell-day_current">
                               8
                             </div>
-                            <div className="calendar__cell_cell-day _weekend">
+                            <div className="calendar__cell _cell-day _weekend">
                               9
                             </div>
-                            <div className="calendar__cell_cell-day _weekend">
+                            <div className="calendar__cell _cell-day _weekend">
                               10
                             </div>
-                            <div className="calendar__cell_cell-day">11</div>
-                            <div className="calendar__cell_cell-day">12</div>
-                            <div className="calendar__cell_cell-day">13</div>
-                            <div className="calendar__cell_cell-day">14</div>
+                            <div className="calendar__cell _cell-day">11</div>
+                            <div className="calendar__cell _cell-day">12</div>
+                            <div className="calendar__cell _cell-day">13</div>
+                            <div className="calendar__cell _cell-day">14</div>
                             <div className="calendar__cell _cell-day">15</div>
                             <div className="calendar__cell _cell-day _weekend">
                               16
