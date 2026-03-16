@@ -1,31 +1,33 @@
+import { CardsItem, CardsCard, CardsGroup, CardBtn, CardsTheme, CardContent, CardTitle, CardDate } from "./CardItem.styled.js"; 
+  
 function CardItem({ item }) {
   if (!item) {
     return null; // или можно возвращать сообщение об ошибке
   }
   const { topic, title, date, id } = item;
 
-  const themeColor = getThemeColor(topic);
+  const themeColor = getThemeColor(topic); 
 
   return (
-    <div className="cards__item" id={`card-${id}`}>
-      <div className="cards__card card">
-        <div className="card__group">
-          <div className={`card__theme _${themeColor}`}>
-            <p className={`_${themeColor}`}>{topic}</p>
-          </div>
+    <CardsItem id={`card-${id}`}>
+      <CardsCard>
+        <CardsGroup>
+         <CardsTheme theme={themeColor}>
+         <p className={`_${themeColor}`}>{topic}</p>
+         </CardsTheme>
           <a href="#popBrowse" target="_self" rel="noopener noreferrer">
-            <div className="card__btn">
+            <CardBtn>
               <div></div>
               <div></div>
               <div></div>
-            </div>
+            </CardBtn>
           </a>
-        </div>
-        <div className="card__content">
+        </CardsGroup>
+        <CardContent>
           <a href="" target="_blank" rel="noopener noreferrer">
-            <h3 className="card__title">{title}</h3>
+            <CardTitle>{title}</CardTitle>
           </a>
-          <div className="card__date">
+          <CardDate>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="13"
@@ -55,10 +57,10 @@ function CardItem({ item }) {
               </defs>
             </svg>
             <p>{date}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+          </CardDate>
+        </CardContent>
+      </CardsCard>
+    </CardsItem>
   );
 }
 
@@ -76,4 +78,3 @@ function CardItem({ item }) {
 }
 
 export default CardItem;  
-  
