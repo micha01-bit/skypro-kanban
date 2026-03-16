@@ -1,5 +1,8 @@
-const NotFoundPage = () => {
-  return <div>Страница не найдена</div>;
-};
+import { NotFound } from "../components/notFound/NotFound";
 
-export default NotFoundPage;
+
+export const NotFoundPage = ({token}) => {
+   return (
+      <NotFound token={token}/>
+   )
+};

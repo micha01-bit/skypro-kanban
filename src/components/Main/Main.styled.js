@@ -1,19 +1,29 @@
 import styled from "styled-components";
 
-export const MainWrapper = styled.main`
-  width: 100%;
-  background-color: #EAEEF6;
-  height: 100vh
+
+export const SWrapper = styled.div`
+  max-width: 100%;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #F1F1F1;
+  display: flex;
+  flex-direction: column;
+  `;
+
+export const SMock = styled.div`
+  color: #94A6BE;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-grow: 1;
 `;
 
-export const MainBlock = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  padding: 25px 0 49px; 
-  display: flex; 
-  max-width: 1200px;
-
-  @media screen and (max-width: 1200px) {
-    padding: 40px 0 64px;
-  }
+export const SMessage = styled.div`
 `;
