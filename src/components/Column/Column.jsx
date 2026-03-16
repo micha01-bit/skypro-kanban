@@ -1,21 +1,12 @@
-import "./App.css";
-import Card from "../Card.jsx"
-import { cardList } from "./data.js";
+import Card from '../Card/Card.jsx';
 
-export function Column({ title }) {
+function Column() {
   return (
-    <div className="main__column column">
-      <div className="column__title">
-        <p>{title}</p>
-      </div>
-      <div className="cards">
-      {   cardList
-                .filter((item) => item.status === title)
-                .map((item, id) =>
-                  <Card item={item} key={id}/>
-                )}
-      </div>
-    </div>
+    <> 
+    <div className="main__content">
+        <Card />
+    </div> 
+    </>
   );
 }
 
