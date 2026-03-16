@@ -13,27 +13,40 @@ import {
 
 function Header() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false); // новое состояние для окна выхода
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const openLogoutModal = () => {
+    setIsLogoutModalOpen(true);
+  };
+
+  const closeLogoutModal = () => {
+    setIsLogoutModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    // Логика выхода (например, очистка токенов, редирект)
+    console.log("выход из аккаунта");
+    setIsLogoutModalOpen(false);
+    // Можно добавить редирект или другую логику
+  };
+
   return (
     <>
+      {/* Основной блок хедера */}
       <HeaderWrapper>
         <HeaderContainer>
           <HeaderBlock>
             {/* Логотипы */}
-            
-              <a href="" target="_self">
-                <HeaderLogo src="/images/logo.png" alt="logo" />
-              </a>
-            
-            
-              <a href="" target="_self">
-                <HeaderLogo src="/images/logo_dark.png" alt="logo" />
-              </a>
-            
+            <a href="" target="_self">
+              <HeaderLogo src="/images/logo.png" alt="logo" />
+            </a>
+            <a href="" target="_self">
+              <HeaderLogo src="/images/logo_dark.png" alt="logo" />
+            </a>
 
             {/* Навигация */}
             <HeaderNav>
@@ -54,35 +67,129 @@ function Header() {
               {/* Модальное окно, показывается по состоянию isModalOpen */}
               {isModalOpen && (
                 <HeaderPopUserSet id="user-set-target">
-                  {/* <a href="">x</a> */}
-                  <p className="pop-user-set__name">Ivan Ivanov</p>
-                  <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
-                  <div className="pop-user-set__theme">
-                    <p>Темная тема</p>
-                    <input
-                      type="checkbox"
-                      className="checkbox"
-                      name="checkbox"
-                    />
-                  </div>
-                  <ExitButton
-                    type="button"
-                    onClick={toggleModal} // Закрываем окно при клике
-                  >
-                    Выйти
-                  </ExitButton>
-                </HeaderPopUserSet>
+           {/* <a href="">x</a> */}
+           <p className="pop-user-set__name">Ivan Ivanov</p>
+           <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
+           <div className="pop-user-set__theme">
+    
+           <p>Темная тема</p>
+    
+           <input
+          type="checkbox"
+          className="checkbox"
+           name="checkbox"
+          />
+           </div>
+           <ExitButton
+    
+           type="button"
+     
+          onClick={openLogoutModal} // вызываем окно подтверждения выхода
+           >
+             Выйти
+           </ExitButton>         
+           </HeaderPopUserSet>
               )}
             </HeaderNav>
           </HeaderBlock>
         </HeaderContainer>
       </HeaderWrapper>
+
+      {/* Блок подтверждения выхода из аккаунта (модальное окно) */}
+     {isLogoutModalOpen && (
+  <div
+    style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)', // затемнение
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      zIndex: 9999,
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: '#fff',
+        padding: '20px',
+        borderRadius: '8px',
+        width: '370px',
+        height: '180px',
+        maxWidth: '80%',
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+      }}
+    >
+      <p style={{
+        paddingTop: '30px',
+        fontFamily: 'Roboto',
+        fontSize: '20px',
+        fontWeight: '700',
+        textAlign: 'center',
+      }}>Выйти из аккаунта?</p>
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-around',
+        marginTop: '20px',
+      }}>
+        <button
+          onClick={handleLogout}
+          style={{
+            padding: '8px 10px 8px 10px',
+            width: '153px',
+            height: '30px',
+            borderRadius: '4px',
+            backgroundColor: '#ffffff',
+            color: '#565eef',
+            border: '1px solid #565eef',
+            cursor: 'pointer',
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = '#33399b';
+            e.target.style.color = '#ffffff';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = '#ffffff';
+            e.target.style.color = '#565eef';
+          }}
+        >
+          Да, выйти
+        </button>
+        <button
+          onClick={closeLogoutModal}
+          style={{
+            padding: '8px 10px 8px 10px',
+            width: '153px',
+            height: '30px',
+            borderRadius: '4px',
+            backgroundColor: '#ffffff',
+            color: '#565eef',
+            border: '1px solid #565eef',
+            cursor: 'pointer',
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = '#33399b';
+            e.target.style.color = '#ffffff';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = '#ffffff';
+            e.target.style.color = '#565eef';
+          }}
+        >
+          Нет, остаться
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </>
   );
 }
 
 export default Header; 
-  
- 
-{/* <div className='header_logo _show _light'></div> */}  
-{/* <div className="header__logo _dark"></div> */}
