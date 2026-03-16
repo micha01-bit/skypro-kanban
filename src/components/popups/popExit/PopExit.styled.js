@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
@@ -12,13 +13,17 @@ export const SPageBackground = styled.div`
 
 export const SWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   min-width: 320px;
   min-height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 5;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const SContainer = styled.div`
@@ -36,13 +41,16 @@ export const SContainer = styled.div`
 export const SBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #FFFFFF;
+  background-color: var(--bg-secondary);
   max-width: 370px;
   width: 100%;
   padding: 50px 28.5px;
   border-radius: 10px;
-  border: 0.7px solid #D4DBE5;
+  border: 0.7px solid var(--borders);
   box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+  @media only screen and (max-width: 375px) {
+    padding: 50px 20px;
+  }
 `;
 
 export const SContent = styled.div`
@@ -77,5 +85,20 @@ export const SButtonWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 7px;
+  & > * {
+    flex: 1; 
+  }
+  @media only screen and (max-width: 375px) {
+    flex-direction: column;
+    gap: 7px;
+  }
 `;
 
+export const SStyledLink = styled(Link)`
+  text-decoration: none;
+  @media only screen and (max-width: 375px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+`; 

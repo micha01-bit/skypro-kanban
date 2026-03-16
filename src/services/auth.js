@@ -27,4 +27,4 @@ export async function registration({name, login, password}) {
   } catch (error) {
     throw new Error(error.response.data.error);
   }
-}
+} 

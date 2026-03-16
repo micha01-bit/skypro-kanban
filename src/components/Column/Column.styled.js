@@ -5,6 +5,13 @@ export const SColumn = styled.div`
   width: 20%;
   margin: 0 auto;
   display: block;
+  @media screen and (max-width: 1200px) { 
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+  grid-template-rows: auto 1fr;
+  height: 100%;
 `
 
 export const SColumnTitleContainer = styled.div`
@@ -13,7 +20,7 @@ export const SColumnTitleContainer = styled.div`
 `
 
 export const SColumnTitle = styled.p`
-  color: #94A6BE;
+  color: var(--text-secondary);
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
@@ -21,9 +28,17 @@ export const SColumnTitle = styled.p`
 `
 
 export const SCards = styled.div`
-  width: 100%;
-  display: block;
-  position: relative;
+  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 130px;
+  align-content: start;
+  
+  @media screen and (max-width: 1200px) { 
+    width: 100%;
+    display: flex;
+    overflow-y: auto;
+  }
 `
 
 const cardAnimation = keyframes`
@@ -43,4 +58,16 @@ export const SCardItem = styled.div`
   animation-name: ${cardAnimation};
   animation-duration: 500ms;
   animation-timing-function: linear;
+  position: relative;
 `
+
+export const SGhostContainer = styled.div`
+  width: 100%;
+  height: 130px;
+  padding: 5px;
+  margin-top: 5px;
+  position: relative;
+  animation-name: ${cardAnimation};
+  animation-duration: 500ms;
+  animation-timing-function: linear;
+  ` 

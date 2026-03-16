@@ -6,13 +6,13 @@ export const SWrapper = styled.div`
   width: 100vw;
   min-height: 100vh;
   overflow: hidden;
-  background-color: #F1F1F1;
+  background-color: var(--bg-secondary);
   display: flex;
   flex-direction: column;
   `;
 
 export const SMock = styled.div`
-  color: #94A6BE;
+  color: var(--text-secondary);
   font-size: 30px;
   font-weight: 600;
   line-height: 1;
@@ -26,4 +26,6 @@ export const SMock = styled.div`
 `;
 
 export const SMessage = styled.div`
-`;
+`; 
+ 
+// background-color: #F1F1F1;

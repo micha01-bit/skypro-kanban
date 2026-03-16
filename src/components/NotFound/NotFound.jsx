@@ -1,5 +1,5 @@
 import { SPageBackground, STitle, SMessage } from "./NotFound.styled";
-import { SHeader, SHeaderContainer, SHeaderBlock, SHeaderLogo, SHeaderLogoLight, SHeaderLogoDark } from "../Header/Header.styled";
+import { SHeader, SHeaderContainer, SHeaderBlock, SHeaderLogo, SHeaderLogoLight, SHeaderLogoDark } from "../header/Header.styled";
 import { Button } from "../Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { SButtonWrapper } from "./NotFound.styled";

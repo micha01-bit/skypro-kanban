@@ -1,6 +1,6 @@
 import { SPageBackground, SWrapper, STitle, SForm, SInputWrapper, SFooterWrapper, SFooterText, SFooterLink, SErrorMessageWrapper, SErrorMessageText } from "./AuthForm.styled";
 import { Input } from "../Input/Input";
-import { Button } from "../Button/Button";
+import { Button } from "../button/Button";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -12,7 +12,8 @@ export const AuthForm = ({ isSignUp }) => {
   const {
     handleChange, handleLogin,
     formData, errors,
-    error, isValid
+    error,
+    resetError
   } = useContext(AuthContext);
 
 
@@ -39,12 +40,15 @@ export const AuthForm = ({ isSignUp }) => {
 
           <SErrorMessageWrapper><SErrorMessageText>{error}</SErrorMessageText></SErrorMessageWrapper>
 
-          <Button text={isSignUp ? "Зарегистрироваться" : "Войти"} type="primary" disabled={!isValid} />
+          <Button text={isSignUp ? "Зарегистрироваться" : "Войти"} type="primary" disabled={error} />
 
           {!isSignUp && (
             <SFooterWrapper>
               <SFooterText>Нужно зарегистрироваться?</SFooterText>
-              <SFooterLink to="/registration">
+              <SFooterLink
+                to="/registration"
+                onClick={resetError}
+              >
                 Регистрируйтесь здесь
               </SFooterLink>
             </SFooterWrapper>
@@ -53,7 +57,13 @@ export const AuthForm = ({ isSignUp }) => {
           {isSignUp && (
             <SFooterWrapper>
               <SFooterText>
-                Уже есть аккаунт? <SFooterLink to="/login">Войдите здесь</SFooterLink>
+                Уже есть аккаунт?
+                <SFooterLink
+                  to="/login"
+                  onClick={resetError}
+                >
+                  Войдите здесь
+                </SFooterLink>
               </SFooterText>
             </SFooterWrapper>
           )}
@@ -62,4 +72,4 @@ export const AuthForm = ({ isSignUp }) => {
       </SWrapper>
     </SPageBackground>
   )
-}
+} 

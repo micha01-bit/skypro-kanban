@@ -1,22 +1,25 @@
-import { useState, useEffect, useCallback, useContext } from "react";
+import { useState, useEffect, useCallback, useContext, createContext } from "react";
 import { deleteTask, editTask, fetchTasks, postTask } from "../services/api.js";
 import { TasksContext } from "./TasksContext.js";
 import { AuthContext } from "./AuthContext.js";
 
 export const TasksProvider = ({ children }) => {
-  const { token } = useContext(AuthContext); // берём token из AuthContext
+  const { token } = useContext(AuthContext);
 
   const [isLoading, setIsLoading] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [error, setError] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
 
+  // Состояния для drag-and-drop функциональности
+  const [isDraggable, setIsDraggable] = useState(false);
+  const [draggableCardId, setDraggableCardId] = useState(null);
+  const [dragStartColumn, setDragStartColumn] = useState(null);
+
   const getTasks = useCallback(async () => {
     try {
       setIsLoading(true);
-      const data = await fetchTasks({
-        token: token,
-      });
+      const data = await fetchTasks({ token: token });
       if (data) setTasks(data);
     } catch (err) {
       setError(err.message);
@@ -32,14 +35,24 @@ export const TasksProvider = ({ children }) => {
   }, [getTasks, token]);
 
   const addTask = async ({ newTask }) => {
+    if (!token) {
+      console.error("Токен авторизации отсутствует");
+      window.location.href = "/login";
+      return;
+    }
+
     setIsLoading(true);
     try {
-      await postTask({ token, newTask })
-        .then((data) => {
-          setTasks(data);
-        });
+      await postTask({ token, newTask }).then((data) => {
+        setTasks(data);
+      });
     } catch (err) {
-      setError(err.message);
+      if (err.response?.status === 401) {
+        console.error("Сессия истекла. Требуется авторизация");
+        window.location.href = "/login";
+      } else {
+        setError(err.message);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -49,13 +62,12 @@ export const TasksProvider = ({ children }) => {
     setTasks(newTasks);
   };
 
-  const editTasks = async (id, task) => { // убираем token из параметров
+  const editTasks = async (id, task) => {
     setIsLoading(true);
     try {
-      await editTask(token, id, task) // передаём token напрямую из контекста
-        .then((data) => {
-          setTasks(data);
-        });
+      await editTask(token, id, task).then((data) => {
+        setTasks(data);
+      });
     } catch (err) {
       setError(err.message);
     } finally {
@@ -63,13 +75,12 @@ export const TasksProvider = ({ children }) => {
     }
   };
 
-  const deleteTasks = async (id) => { // убираем token из параметров
+  const deleteTasks = async (id) => {
     setIsLoading(true);
     try {
-      await deleteTask(token, id) // передаём token напрямую из контекста
-        .then((data) => {
-          setTasks(data);
-        });
+      await deleteTask(token, id).then((data) => {
+        setTasks(data);
+      });
     } catch (err) {
       setError(err.message);
     } finally {
@@ -81,6 +92,36 @@ export const TasksProvider = ({ children }) => {
     setSelectedDate(date);
   };
 
+  // Новая функция для обновления статуса задачи
+  const updateTaskStatus = async (cardId, newStatus) => {
+    setIsLoading(true);
+    try {
+      // Находим задачу по ID
+      const taskToUpdate = tasks.find(task => task._id === cardId);
+      if (!taskToUpdate) return;
+
+      // Создаём обновлённую задачу
+      const updatedTask = {
+        ...taskToUpdate,
+        status: newStatus
+      };
+
+      // Обновляем на сервере
+      await editTask(token, cardId, updatedTask);
+
+      // Обновляем локальное состояние
+      setTasks(prevTasks =>
+        prevTasks.map(task =>
+          task._id === cardId ? updatedTask : task
+        )
+      );
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <TasksContext.Provider
       value={{
@@ -90,134 +131,24 @@ export const TasksProvider = ({ children }) => {
         isLoading,
         setIsLoading,
         getTasks,
-        addTask,
+        addTask, 
         updateTasks,
         editTasks,
         deleteTasks,
         selectedDate,
-        updateSelectedDate
+        updateSelectedDate,
+        // Drag-and-drop функции
+        isDraggable,
+        setIsDraggable,
+        draggableCardId,
+        setDraggableCardId,
+        dragStartColumn,
+        setDragStartColumn,
+        // Новая функция для обновления статуса
+        updateTaskStatus
       }}
     >
       {children}
     </TasksContext.Provider>
   );
 };
- 
- 
-  
-   
-// import { useState, useEffect, useCallback, useContext } from "react";
-// import { deleteTask, editTask, fetchTasks, postTask } from "../services/api.js";
-// import { TasksContext } from "./TasksContext.js";
-// import { AuthContext } from "./AuthContext.js";
-
-
-// export const TasksProvider = ({ children }) => {
-//   const { user } = useContext(AuthContext);
-//   const token = user?.token;
-
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [tasks, setTasks] = useState([]);
-//   const [error, setError] = useState("");
-//   const [selectedDate, setSelectedDate] = useState(null);
-
-
-//   const getTasks = useCallback(async () => {
-//     try {
-//       setIsLoading(true);
-//       const data = await fetchTasks({
-//         token: token,
-//       });
-//       if (data) setTasks(data);
-//     } catch (err) {
-//       setError(err.message);
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   }, [token]);
-
-
-//   useEffect(() => {
-//     if (token) {
-//       getTasks();
-//     }
-//   }, [getTasks, token]);
-
-
-//   const addTask = async ({ newTask }) => {
-//     setIsLoading(true);
-//     try {
-//       await postTask({ token, newTask })
-//         .then((data) => {
-//           setTasks(data);
-//         })
-//     } catch (err) {
-//       setError(err.message);
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   const updateTasks = (newTasks) => {
-//     setTasks(newTasks);
-//   };
-
-//   const editTasks = async (token, id, task) => {
-//     setIsLoading(true);
-//     try {
-//       await editTask(token, id, task)
-//         .then((data) => {
-//           setTasks(data);
-//         })
-
-//       // const updatedTasks = await editTask(token, id, task);
-//       // setTasks(updatedTasks);
-//     } catch (err) {
-//       setError(err.message);
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   const deleteTasks = async (token, id) => {
-//     setIsLoading(true);
-//     try {
-//       await deleteTask(token, id)
-//         .then((data) => {
-//           setTasks(data);
-//         })
-
-//       // await deleteTask(token, id);
-//       // setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
-//     } catch (err) {
-//       setError(err.message);
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   const updateSelectedDate = (date) => {
-//     setSelectedDate(date);
-//   };
-
-
-//   return (
-//     <TasksContext.Provider
-//       value={{
-//         tasks,
-//         setTasks,
-//         error,
-//         isLoading, setIsLoading,
-//         getTasks, addTask,
-//         token,
-//         updateTasks,
-//         editTasks,
-//         deleteTasks,
-//         selectedDate,
-//         updateSelectedDate
-//       }}
-//     >
-//       {children}
-//     </TasksContext.Provider>
-//   )
-// }
