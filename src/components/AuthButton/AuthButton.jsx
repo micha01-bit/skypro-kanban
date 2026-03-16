@@ -1,4 +1,4 @@
-import styled from "styled-components";
+ import styled from "styled-components";
 
 const colors = {
   primary: "rgba(255, 255, 255, 1)",
@@ -56,4 +56,4 @@ const BaseButton = ({
   );
 };
 
-export default BaseButton;
+export default BaseButton; 
