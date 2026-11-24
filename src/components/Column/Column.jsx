@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { Card } from "../card/Card";
-import { Loader } from "../loader/Loader";
+import { Card } from "../Card/Card";
+import { Loader } from "../Loader/Loader";
 import { SColumn, SColumnTitleContainer, SColumnTitle, SCards, SCardItem, SGhostContainer } from "./Column.styled";
 import { format } from "date-fns";
 import { TasksContext } from "../../context/TasksContext";
-import { SCardContainerGhostColumnEnd } from "../card/Card.styled";
+import { SCardContainerGhostColumnEnd } from "../Card/Card.styled";
 
 export const Column = ({ title, cardsByStatus, onMoveCard }) => {
   const { isLoading, isDraggable, draggableCardId, setIsDraggable, setDraggableCardId, dragStartColumn } = useContext(TasksContext);
