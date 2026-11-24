@@ -1,6 +1,6 @@
 import { SPageBackground, SWrapper, STitle, SForm, SInputWrapper, SFooterWrapper, SFooterText, SFooterLink, SErrorMessageWrapper, SErrorMessageText } from "./AuthForm.styled";
 import { Input } from "../Input/Input";
-import { Button } from "../button/Button";
+import { Button } from "../Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
