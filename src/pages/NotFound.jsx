@@ -1,4 +1,4 @@
-import { NotFound } from "../components/notFound/NotFound";
+import { NotFound } from "../components/NotFound/NotFound";
 
 
 export const NotFoundPage = ({token}) => {
