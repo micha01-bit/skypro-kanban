@@ -1,4 +1,4 @@
-import { AuthForm } from "../components/authForm/AuthForm";
+import { AuthForm } from "../components/AuthForm/AuthForm";
 
 
 export const Registration = () => {
